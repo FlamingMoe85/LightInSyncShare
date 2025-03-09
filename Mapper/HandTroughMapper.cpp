@@ -9,7 +9,7 @@ HandTroughMapper::HandTroughMapper(std::vector<uint8_t *> &_universum, float _de
 
 void HandTroughMapper::Consume(int& _itterationCntr, float _pos)
 {
-    *(universum[index]) = (uint8_t)(max*_pos);
+    *(universum[index]) = (uint8_t)(max*GetFuncCont()->Calc(_pos));
 }
 
 void HandTroughMapper::Request(int& _itterationCntr)

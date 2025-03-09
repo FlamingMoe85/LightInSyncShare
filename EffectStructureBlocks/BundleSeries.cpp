@@ -26,7 +26,7 @@ void BundleSeries::Serve(int& _itterration, float pos)
         {
             tmpPos = spanContainer.Calc(Shift(pos, _itterration));
             if(tmpPos > 1.0) tmpPos -= 1.0;
-            tmpPos = funcContainer.Calc(tmpPos);
+            tmpPos = GetFuncCont()->Calc(tmpPos);
             c->Consume(_itterration, tmpPos);
             index += 1.0;
         }
@@ -87,6 +87,7 @@ void BundleSeries::Span(int &_itterration)
     else spanContainer.DefineSpanArea(spanMin, spanMax);
 }
 
+/*
 void BundleSeries::AddFunctionSectionByParams(float _topX, float _bottomX, float _topY, float _bottomY)
 {
     funcContainer.AddFuncSeg(new FunctionSection_Linear(_bottomX, _topX, _bottomY, _topY));
@@ -96,3 +97,4 @@ void BundleSeries::SetFunctionSections(vector<funcSection_t> &funcSecs)
     funcContainer.ClearSections();
     funcContainer.SetFunctionSections(funcSecs);
 }
+*/

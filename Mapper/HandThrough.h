@@ -2,7 +2,7 @@
 #define HANDTHROUGH_H
 
 #include "../../../share/BrokerClientServer/ClientServerBase.hpp"
-#include "../Devices/Interfaces/I_DmxChannelRandom.hpp".hpp"
+#include "../Devices/Interfaces/I_DmxChannelRandom.hpp"
 
 class HandThrough : public ClientServerBase
 {

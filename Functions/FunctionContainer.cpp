@@ -23,6 +23,11 @@ void FunctionContainer::ClearSections()
     funcSegments.clear();
 }
 
+void FunctionContainer::AddFunctionSectionByParams(float _topX, float _bottomX, float _topY, float _bottomY)
+{
+    AddFuncSeg(new FunctionSection_Linear(_bottomX, _topX, _bottomY, _topY));
+}
+
 void FunctionContainer::SetFunctionSections(vector<funcSection_t> &funcSecs)
 {
     ClearSections();

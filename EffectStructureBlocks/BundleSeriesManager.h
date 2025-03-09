@@ -12,6 +12,7 @@ public:
     BundleSeriesManager();
 
     void GenerateBundleSeries(unsigned int _amt);
+    int Count(){return bundleSeriesVec.size();}
     void SetMaxShift(float _maxShift);
 
     int RegisterClientToItem(unsigned int _item, I_Client *_c);

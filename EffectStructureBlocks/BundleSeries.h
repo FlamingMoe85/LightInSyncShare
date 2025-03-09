@@ -4,10 +4,11 @@
 #include "../BrokerClientServer/ClientServerBase.hpp"
 #include "../Functions/FunctionContainerSpan.h"
 #include "../Mapper/OneChannelMapper.h"
+#include "../FunctionOwners.hpp"
 
 
 
-class BundleSeries : public ClientServerBase
+class BundleSeries : public ClientServerBase, public FunctionOwners
 {
 public:
     BundleSeries() :    mapperSpeed(speedMultiplier, 10.0, 0.1),
@@ -37,9 +38,7 @@ public:
     void SetSerParamSpanMin(I_Server* _s){_s->RegisterClient(&mapperspanMin);};
     void SetSerParamSpanMax(I_Server* _s){_s->RegisterClient(&mapperspanMax);};
     void SetSerParamSpanOffset(I_Server* _s){_s->RegisterClient(&mapperSpanOffset);};
-
-    void AddFunctionSectionByParams(float _topX, float _bottomX, float _topY, float _bottomY);
-    void SetFunctionSections(vector<funcSection_t> &funcSecs);
+    int GetTypeId() override {return  FUNC_OWNER_IDS::BUNDLE_SERIES;}
 
 private:
 
@@ -47,7 +46,6 @@ private:
     float Shift(float _pos, int& _itterration);
     void Span(int& _itterration);
     FunctionContainerSpan spanContainer;
-    FunctionContainer funcContainer;
 
     float speedMultiplier, shift, shiftStepSize, spanNotch, spanMin, spanMax, spanOffset;
     OneChannelMapper mapperSpeed, mapperShift, mapperspanNotch, mapperspanMin, mapperspanMax, mapperSpanOffset;

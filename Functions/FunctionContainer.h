@@ -14,6 +14,7 @@ public:
     FunctionContainer();
 
     int AddFuncSeg(I_FunctionSection* funcSeg){funcSegments.push_back(funcSeg); return 0;};
+    void AddFunctionSectionByParams(float _topX, float _bottomX, float _topY, float _bottomY);
     void SetFunctionSections(vector<funcSection_t> &funcSecs);
     void ClearSections();
     float Calc(float arg);

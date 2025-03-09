@@ -4,9 +4,11 @@
 #include "stdint.h"
 #include "../../../share/BrokerClientServer/ClientServerBase.hpp"
 #include "../../../share/GlobalDefines_Shared.h"
+//#include "../Functions/FunctionContainer.h"
+#include "../FunctionOwners.hpp"
 #include <vector>
 
-class HandTroughMapper : public ClientServerBase
+class HandTroughMapper : public ClientServerBase, public FunctionOwners
 {
 public:
     HandTroughMapper(std::vector<uint8_t*>& _universum, float _defaultMax, float _suggested);
@@ -15,6 +17,7 @@ public:
     void Request(int& _itterationCntr) override;
     void SetMax(float _max){ if(_max > 0) max = _max;};
     void SetIndex(int _index){index = _index;}
+    int GetTypeId() override {return  FUNC_OWNER_IDS::HAND_TRHOUGH;}
 
 private:
     float max;

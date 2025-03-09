@@ -7,7 +7,7 @@ ColorWheelMapper::ColorWheelMapper()
 
 void ColorWheelMapper::Consume(int& _itterationCntr, float _pos)
 {
-    if(rgbDev != 0)Wheel(_pos);
+    if(rgbDev != 0)Wheel(GetFuncCont()->Calc(_pos));
 }
 
 void ColorWheelMapper::Wheel(float _pos)
