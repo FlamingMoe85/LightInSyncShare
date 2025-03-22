@@ -10,7 +10,8 @@ enum FUNC_OWNER_IDS
 {
     HAND_TRHOUGH,
     BUNDLE_SERIES,
-    COLOR_WHEEL
+    COLOR_WHEEL,
+    POSITIONER
 };
 
 
@@ -19,6 +20,7 @@ class FunctionOwners
 friend class HandThroughMapper;
 friend class BundleSeries;
 friend class ColorWheelMapper;
+friend class Positioner;
 
 public:
     virtual int GetTypeId() = 0;
