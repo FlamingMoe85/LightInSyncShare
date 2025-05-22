@@ -15,7 +15,7 @@ float FunctionContainer::Calc(float arg)
             return seg->Calc(arg - seg->GetBottomX());
         }
     }
-    return 0;
+    return arg;
 }
 
 void FunctionContainer::ClearSections()
