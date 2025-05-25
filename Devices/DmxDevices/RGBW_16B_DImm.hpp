@@ -5,6 +5,7 @@
 #include "../Interfaces/I_RGBW_Dimm.hpp"
 #include "../Interfaces/I_RGB.hpp"
 #include "../Interfaces/I_White.hpp"
+#include "../Interfaces/I_WhiteDimm.hpp"
 #include "../Interfaces/I_DmxChannelRandom.hpp"
 #include "../Channel/DmxChannel_8Bit.hpp"
 
@@ -23,6 +24,7 @@ class RGBW_16B_Dimm :
                                 public I_RGB,
                                 public I_RGBW,
                                 public I_White,
+                                public I_WhiteDimm,
                                 public I_RGBW_Dimm,
                                 public I_DmxChannelRandom
 {
@@ -35,6 +37,7 @@ public:
                                                                     whiteMapper(_universum, 255.0, 0.0)
     {
         dimm = 0;
+        dimmWhite = 0;
     };
 
     unsigned int Count(){return 1;};
@@ -60,8 +63,9 @@ public:
         redH.SetChnlVal((tmpU16>>8), universum);}
     void SetGreenChnlVal(uint8_t val){tmpU16 = val*dimm; greenL.SetChnlVal(tmpU16, universum); greenH.SetChnlVal((tmpU16>>8), universum);}
     void SetBlueChnlVal(uint8_t val){tmpU16 = val*dimm; blueL.SetChnlVal(tmpU16, universum); blueH.SetChnlVal((tmpU16>>8), universum);};
-    void SetWhiteChnlVal(uint8_t val){tmpU16 = val*dimm; whiteL.SetChnlVal(tmpU16, universum); whiteH.SetChnlVal((tmpU16>>8), universum);}
+    void SetWhiteChnlVal(uint8_t val){tmpU16 = val*dimmWhite; whiteL.SetChnlVal(tmpU16, universum); whiteH.SetChnlVal((tmpU16>>8), universum);}
     void SetDimmChnlVal(uint8_t val){dimm = val;}
+    void SetWhiteDimmChnlVal(uint8_t val){dimmWhite = val;}
 
     void SetRandomChnlVal(uint8_t val, uint16_t channel){*(universum[channel]) += val;};
 
@@ -84,7 +88,7 @@ private:
     HandTroughMapper redMapper, greenMapper, blueMapper, whiteMapper;
     unsigned int dmxAdrress;
     std::vector<uint8_t*>& universum;
-    uint8_t dimm;
+    uint8_t dimm, dimmWhite;
     uint16_t tmpU16;
 };
 

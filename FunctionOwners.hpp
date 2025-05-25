@@ -13,7 +13,8 @@ enum FUNC_OWNER_IDS
     COLOR_WHEEL,
     POSITIONER,
     WHITE_MAPPER,
-    DIMM_MAPPER
+    DIMM_MAPPER,
+    WHITEDIMM_MAPPER
 };
 
 
@@ -25,6 +26,7 @@ friend class ColorWheelMapper;
 friend class Positioner;
 friend class White_Mapper;
 friend class Dimm_Mapper;
+friend class WhiteDimm_Mapper;
 
 public:
     virtual int GetTypeId() = 0;
