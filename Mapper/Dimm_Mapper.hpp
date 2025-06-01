@@ -14,7 +14,7 @@ public:
     void Consume(int& _itterationCntr, float _pos) override;
 
     void SetDimmDevice(I_Dimm* _dimmDev){dimmDev = _dimmDev;};
-    int GetTypeId() override {return  FUNC_OWNER_IDS::DIMM_MAPPER;}
+    //int GetTypeId() override {return  FUNC_OWNER_IDS::DIMM_MAPPER;}
 
 private:
 

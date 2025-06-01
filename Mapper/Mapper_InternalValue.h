@@ -1,5 +1,5 @@
-#ifndef HANDTROUGHMAPPER_H
-#define HANDTROUGHMAPPER_H
+#ifndef MAPPER_INTERNALVALUE_H
+#define MAPPER_INTERNALVALUE_H
 
 #include "stdint.h"
 #include "../../../share/BrokerClientServer/ClientServerBase.hpp"
@@ -8,23 +8,20 @@
 #include "../FunctionOwners.hpp"
 #include <vector>
 
-class HandTroughMapper : public ClientServerBase, public FunctionOwners
+class Mapper_InternalValue : public ClientServerBase, public FunctionOwners
 {
 public:
-    HandTroughMapper(std::vector<uint8_t*>& _universum, float _defaultMax, float _suggested);
+    Mapper_InternalValue(uint8_t &_externalValue, float _defaultMax, float _suggested);
 
     void Consume(int& _itterationCntr, float _pos) override;
     void Request(int& _itterationCntr) override;
     void SetMax(float _max){ if(_max > 0) max = _max;};
-    void SetIndex(int _index){index = _index;}
-    //int GetTypeId() override {return  FUNC_OWNER_IDS::HAND_TRHOUGH;}
 
 private:
     float max;
     float suggested;
-    std::vector<uint8_t*>& universum;
+    uint8_t& externalValue;
     int itterration;
-    int index;
 };
 
-#endif // HANDTROUGHMAPPER_H
+#endif // MAPPER_INTERNALVALUE_H

@@ -20,6 +20,7 @@ public:
     Base_Client();
 
     virtual void SetServer(I_Server* _brokerRequestable);
+    I_Server* GetServer(){return server;}
     virtual void Request(int& _itterationCntr);
     bool HasServer();
 

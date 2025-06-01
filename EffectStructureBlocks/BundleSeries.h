@@ -38,7 +38,7 @@ public:
     void SetSerParamSpanMin(I_Server* _s){_s->RegisterClient(&mapperspanMin);};
     void SetSerParamSpanMax(I_Server* _s){_s->RegisterClient(&mapperspanMax);};
     void SetSerParamSpanOffset(I_Server* _s){_s->RegisterClient(&mapperSpanOffset);};
-    int GetTypeId() override {return  FUNC_OWNER_IDS::BUNDLE_SERIES;}
+    //int GetTypeId() override {return  FUNC_OWNER_IDS::BUNDLE_SERIES;}
 
 private:
 

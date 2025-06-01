@@ -20,16 +20,8 @@ enum FUNC_OWNER_IDS
 
 class FunctionOwners
 {
-friend class HandThroughMapper;
-friend class BundleSeries;
-friend class ColorWheelMapper;
-friend class Positioner;
-friend class White_Mapper;
-friend class Dimm_Mapper;
-friend class WhiteDimm_Mapper;
-
 public:
-    virtual int GetTypeId() = 0;
+    //virtual int GetTypeId() = 0;
     string* GetType(){return &type;}
     string* GetDescription(){return &description;}
     FunctionContainer* GetFuncCont(){return &functionContainer;}

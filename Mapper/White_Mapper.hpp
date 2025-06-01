@@ -14,7 +14,7 @@ public:
     void Consume(int& _itterationCntr, float _pos) override;
 
     void SetRgbDevice(I_White* _whiteDev){whiteDev = _whiteDev;};
-    int GetTypeId() override {return  FUNC_OWNER_IDS::WHITE_MAPPER;}
+    //int GetTypeId() override {return  FUNC_OWNER_IDS::WHITE_MAPPER;}
 
 private:
 

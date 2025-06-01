@@ -14,7 +14,7 @@ public:
     void Consume(int& _itterationCntr, float _pos) override;
 
     void SetRgbDevice(I_RGB* _rgbDev){rgbDev = _rgbDev;};
-    int GetTypeId() override {return  FUNC_OWNER_IDS::COLOR_WHEEL;}
+    //int GetTypeId() override {return  FUNC_OWNER_IDS::COLOR_WHEEL;}
 
 private:
     I_RGB* rgbDev;

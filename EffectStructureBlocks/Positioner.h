@@ -12,7 +12,7 @@ public:
     void Consume(int& _itterationCntr, float _pos) override;
     void Serve(int& _itterration, float pos) override;
 
-    int GetTypeId() override {return  FUNC_OWNER_IDS::POSITIONER;}
+    //int GetTypeId() override {return  FUNC_OWNER_IDS::POSITIONER;}
 
 private:
     int itterration;

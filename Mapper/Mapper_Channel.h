@@ -1,30 +1,29 @@
-#ifndef HANDTROUGHMAPPER_H
-#define HANDTROUGHMAPPER_H
+#ifndef MAPPER_CHANNEL_H
+#define MAPPER_CHANNEL_H
+
 
 #include "stdint.h"
 #include "../../../share/BrokerClientServer/ClientServerBase.hpp"
 #include "../../../share/GlobalDefines_Shared.h"
 //#include "../Functions/FunctionContainer.h"
 #include "../FunctionOwners.hpp"
+#include "../Devices/Interfaces/I_Channel_8Bit.hpp"
 #include <vector>
 
-class HandTroughMapper : public ClientServerBase, public FunctionOwners
+class Mapper_Channel : public ClientServerBase, public FunctionOwners
 {
 public:
-    HandTroughMapper(std::vector<uint8_t*>& _universum, float _defaultMax, float _suggested);
+    Mapper_Channel(I_Channel_8Bit& _dev, float _defaultMax, float _suggested);
 
     void Consume(int& _itterationCntr, float _pos) override;
     void Request(int& _itterationCntr) override;
     void SetMax(float _max){ if(_max > 0) max = _max;};
-    void SetIndex(int _index){index = _index;}
-    //int GetTypeId() override {return  FUNC_OWNER_IDS::HAND_TRHOUGH;}
 
 private:
     float max;
     float suggested;
-    std::vector<uint8_t*>& universum;
+    I_Channel_8Bit& dev;
     int itterration;
-    int index;
 };
 
-#endif // HANDTROUGHMAPPER_H
+#endif // MAPPER_CHANNEL_H
