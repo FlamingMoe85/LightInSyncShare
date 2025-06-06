@@ -1,12 +1,11 @@
 #ifndef COLORWHEELMAPPER_H
 #define COLORWHEELMAPPER_H
 
-#include "../../../share/BrokerClientServer/ClientServerBase.hpp"
+#include "Mapper_Base.hpp"
 #include "../Devices/Interfaces/I_RGB.hpp"
 #include "../Functions/FunctionContainer.h"
-#include "../FunctionOwners.hpp"
 
-class ColorWheelMapper : public ClientServerBase, public FunctionOwners
+class ColorWheelMapper : public Mapper_Base
 {
 public:
     ColorWheelMapper();

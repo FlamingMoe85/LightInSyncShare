@@ -1,6 +1,9 @@
 #ifndef I_CLIENT_HPP
 #define I_CLIENT_HPP
 
+#include <string>
+using namespace std;
+
 #include "../GlobalDefines_Shared.h"
 class I_Server;
 

@@ -3,14 +3,13 @@
 
 
 #include "stdint.h"
-#include "../../../share/BrokerClientServer/ClientServerBase.hpp"
+#include "Mapper_Base.hpp"
 #include "../../../share/GlobalDefines_Shared.h"
 //#include "../Functions/FunctionContainer.h"
-#include "../FunctionOwners.hpp"
 #include "../Devices/Interfaces/I_Channel_8Bit.hpp"
 #include <vector>
 
-class Mapper_Channel : public ClientServerBase, public FunctionOwners
+class Mapper_Channel : public Mapper_Base
 {
 public:
     Mapper_Channel(I_Channel_8Bit& _dev, float _defaultMax, float _suggested);

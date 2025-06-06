@@ -2,13 +2,12 @@
 #define HANDTROUGHMAPPER_H
 
 #include "stdint.h"
-#include "../../../share/BrokerClientServer/ClientServerBase.hpp"
+#include "Mapper_Base.hpp"
 #include "../../../share/GlobalDefines_Shared.h"
 //#include "../Functions/FunctionContainer.h"
-#include "../FunctionOwners.hpp"
 #include <vector>
 
-class HandTroughMapper : public ClientServerBase, public FunctionOwners
+class HandTroughMapper : public Mapper_Base
 {
 public:
     HandTroughMapper(std::vector<uint8_t*>& _universum, float _defaultMax, float _suggested);

@@ -73,12 +73,12 @@ public:
     void SetDimmRGB(uint8_t _val){dimmRGB = _val;}
     void SetDimmWhite(uint8_t _val){dimmWhite = _val;}
 
-    I_Client* GetRedMapper(){return &redMapper;}
-    I_Client* GetGreenMapper(){return &greenMapper;}
-    I_Client* GetBlueMapper(){return &blueMapper;}
-    I_Client* GetWhiteMapper(){return &whiteMapper;}
-    I_Client* GetRgbDimmMapper(){return &dimmRgbMapper;}
-    I_Client* GetWhiteDimmMapper(){return &dimmWhiteMapper;}
+    Mapper_Base* GetRedMapper(){return &redMapper;}
+    Mapper_Base* GetGreenMapper(){return &greenMapper;}
+    Mapper_Base* GetBlueMapper(){return &blueMapper;}
+    Mapper_Base* GetWhiteMapper(){return &whiteMapper;}
+    Mapper_Base* GetRgbDimmMapper(){return &dimmRgbMapper;}
+    Mapper_Base* GetWhiteDimmMapper(){return &dimmWhiteMapper;}
 
 
 private:

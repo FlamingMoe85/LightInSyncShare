@@ -27,7 +27,6 @@ public:
 private:
     I_Server* server;
     int itterration;
-
 };
 
 #endif // BASE_CLIENT_H

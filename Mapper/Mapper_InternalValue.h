@@ -2,13 +2,12 @@
 #define MAPPER_INTERNALVALUE_H
 
 #include "stdint.h"
-#include "../../../share/BrokerClientServer/ClientServerBase.hpp"
+#include "Mapper_Base.hpp"
 #include "../../../share/GlobalDefines_Shared.h"
 //#include "../Functions/FunctionContainer.h"
-#include "../FunctionOwners.hpp"
 #include <vector>
 
-class Mapper_InternalValue : public ClientServerBase, public FunctionOwners
+class Mapper_InternalValue : public Mapper_Base
 {
 public:
     Mapper_InternalValue(uint8_t &_externalValue, float _defaultMax, float _suggested);
