@@ -3,7 +3,6 @@
 
 #include "stdint.h"
 #include "Mapper_Base.hpp"
-#include "../../../share/GlobalDefines_Shared.h"
 //#include "../Functions/FunctionContainer.h"
 #include <vector>
 

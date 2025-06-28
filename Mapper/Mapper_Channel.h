@@ -4,7 +4,6 @@
 
 #include "stdint.h"
 #include "Mapper_Base.hpp"
-#include "../../../share/GlobalDefines_Shared.h"
 //#include "../Functions/FunctionContainer.h"
 #include "../Devices/Interfaces/I_Channel_8Bit.hpp"
 #include <vector>

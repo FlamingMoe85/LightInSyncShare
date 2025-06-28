@@ -1,8 +1,7 @@
 #ifndef ONECHANNELMAPPER_H
 #define ONECHANNELMAPPER_H
 
-#include "../../../share/BrokerClientServer/ClientServerBase.hpp"
-#include "../../../share/GlobalDefines_Shared.h"
+#include "../BrokerClientServer/ClientServerBase.hpp"
 
 class OneChannelMapper : public ClientServerBase
 {

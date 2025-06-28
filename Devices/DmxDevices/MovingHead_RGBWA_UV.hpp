@@ -2,13 +2,7 @@
 #define MOVINGHEAD_RGBWA_UV_HPP
 
 #include "../Interfaces/I_RGB.hpp"
-#include "../Interfaces/I_White.hpp"
-#include "../Interfaces/I_DmxChannelPan_8Bit.hpp"
-#include "../Interfaces/I_DmxChannelTilt_8Bit.hpp"
-#include "../Interfaces/I_DmxChannelUV_8Bit.hpp"
-
 #include "../../Mapper/Mapper_Channel.h"
-#include "../../Mapper/Mapper_InternalValue.h"
 
 #include "../Channel/Channel_8Bit.hpp"
 
