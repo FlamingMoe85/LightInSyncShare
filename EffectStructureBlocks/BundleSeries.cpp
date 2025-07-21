@@ -1,5 +1,19 @@
 #include "BundleSeries.h"
 
+void BundleSeries::GetRequested(int& _itterationCntr)
+{
+    float val;
+    if((alternateServer != nullptr) && (alternateServer->GetValue(val)))
+    {
+        Serve(_itterationCntr, val);
+    }
+    else if((itterration != _itterationCntr) && (GetServer() != 0))
+    {
+        GetServer()->GetRequested(_itterationCntr);
+    }
+    itterration = _itterationCntr;
+}
+
 void BundleSeries::Consume(int& _itterationCntr, float _pos)
 {
     Serve(_itterationCntr, _pos);
@@ -10,6 +24,7 @@ void BundleSeries::Serve(int& _itterration, float pos)
     list<I_Client*>* clients = GetClientList();
     float index = 0.0;
     float tmpPos;
+    //if(alternateServer != nullptr)alternateServer->SetValue(pos);
 
     SpeedMultiply(_itterration);
     Span(_itterration);
@@ -24,6 +39,10 @@ void BundleSeries::Serve(int& _itterration, float pos)
     {
         for(I_Client* c : (*clients))
         {
+            if(type == NEW_BS)
+            {
+                shiftStepSize = (1.0/(float)clients->size())*index;
+            }
             tmpPos = spanContainer.Calc(Shift(pos, _itterration));
             if(tmpPos > 1.0) tmpPos -= 1.0;
             tmpPos = GetFuncCont()->Calc(tmpPos);
