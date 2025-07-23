@@ -2,6 +2,7 @@
 #define BUNDLESERIES_H
 
 #include "I_AlternateServer.hpp"
+#include "I_BundleSeries_UI.hpp"
 #include "../BrokerClientServer/ClientServerBase.hpp"
 #include "../Functions/FunctionContainerSpan.h"
 #include "../Mapper/OneChannelMapper.h"
@@ -10,7 +11,7 @@
 #define OLD_BS  0
 #define NEW_BS  1
 
-class BundleSeries : public Base_Server, public Base_Client, public FunctionOwners
+class BundleSeries : public ClientServerBase, public FunctionOwners
 {
 public:
     BundleSeries(int _type = OLD_BS) :    mapperSpeed(speedMultiplier, 10.0, 0.1),
@@ -23,10 +24,9 @@ public:
         speedMultiplier = 1.0;
         shift = 0.0;
         type = _type;
-        alternateServer = nullptr;
+        bsUi = nullptr;
     }
 
-    void GetRequested(int& _itterationCntr) override;
     void Consume(int& _itterationCntr, float _pos) override;
     void Serve(int& _itterration, float pos) override;
 
@@ -47,7 +47,11 @@ public:
     void SetSerParamSpanOffset(I_Server* _s){_s->RegisterClient(&mapperSpanOffset);};
     //int GetTypeId() override {return  FUNC_OWNER_IDS::BUNDLE_SERIES;}
 
-    void SetAlternateServer(I_AlternateServer* _aS){alternateServer = _aS;}
+    void SetUi(I_BundleSeries_UI* _bsUi){bsUi = _bsUi;}
+    void SetShift(float _shift){shift = _shift;}
+    void SetSpanMax(float _spanMax){spanMax = _spanMax;}
+    void SetSpanMin(float _spanMin){spanMin = _spanMin;}
+    void SetInputMultiply(float _multi){speedMultiplier = _multi;}
 
 private:
 
@@ -63,7 +67,7 @@ private:
 
     int type;
 
-    I_AlternateServer* alternateServer;
+    I_BundleSeries_UI* bsUi;
 };
 
 #endif // BUNDLESERIES_H

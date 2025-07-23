@@ -1,19 +1,5 @@
 #include "BundleSeries.h"
 
-void BundleSeries::GetRequested(int& _itterationCntr)
-{
-    float val;
-    if((alternateServer != nullptr) && (alternateServer->GetValue(val)))
-    {
-        Serve(_itterationCntr, val);
-    }
-    else if((itterration != _itterationCntr) && (GetServer() != 0))
-    {
-        GetServer()->GetRequested(_itterationCntr);
-    }
-    itterration = _itterationCntr;
-}
-
 void BundleSeries::Consume(int& _itterationCntr, float _pos)
 {
     Serve(_itterationCntr, _pos);
@@ -24,8 +10,8 @@ void BundleSeries::Serve(int& _itterration, float pos)
     list<I_Client*>* clients = GetClientList();
     float index = 0.0;
     float tmpPos;
-    //if(alternateServer != nullptr)alternateServer->SetValue(pos);
 
+    if(bsUi != nullptr) bsUi->PingUi(this);
     SpeedMultiply(_itterration);
     Span(_itterration);
 
@@ -34,6 +20,9 @@ void BundleSeries::Serve(int& _itterration, float pos)
     {
         pos -= 1.0;
     }
+
+    if(bsUi != nullptr) bsUi->GetValue(pos);
+
 
     if(itterration != _itterration)
     {
@@ -76,7 +65,7 @@ void BundleSeries::SpeedMultiply(int &_itterration)
 
 float BundleSeries::Shift(float _pos, int &_itterration)
 {
-    mapperShift.Request(_itterration);
+    if(bsUi == nullptr)mapperShift.Request(_itterration);
     _pos += (shiftStepSize*shift);
     while(_pos > 1.0)
     {
@@ -89,8 +78,8 @@ void BundleSeries::Span(int &_itterration)
 {
     mapperspanNotch.Request(_itterration);
     mapperSpanOffset.Request(_itterration);
-    mapperspanMin.Request(_itterration);
-    mapperspanMax.Request(_itterration);
+    if(bsUi == nullptr)mapperspanMin.Request(_itterration);
+    if(bsUi == nullptr)mapperspanMax.Request(_itterration);
 
     spanMin += spanOffset;
     spanMax += spanOffset;
