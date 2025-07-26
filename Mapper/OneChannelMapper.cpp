@@ -26,7 +26,7 @@ void OneChannelMapper::Request(int& _itterationCntr)
 
     if(itterration != _itterationCntr)
     {
+        itterration = _itterationCntr;
         server->GetRequested(_itterationCntr);
     }
-    itterration = _itterationCntr;
 }

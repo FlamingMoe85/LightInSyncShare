@@ -6,7 +6,7 @@
 class OneChannelMapper : public ClientServerBase
 {
 public:
-    OneChannelMapper(float &_outVal, float _defaultMax, float _suggested);
+    OneChannelMapper(float &_outVal, float _defaultMax, float _suggested = 1.0);
 
     void Consume(int& _itterationCntr, float _pos) override;
     void Request(int& _itterationCntr) override;
