@@ -71,7 +71,7 @@ MovingHead_RGBW_7x40_BeeEye_51Ch(std::vector<uint8_t*>& _universum) :
     mapper_TiltFine.GetFuncCont()->AddFunctionSectionByParams(1.0,0.0,1.0,0.0);
     mapper_PanTiltSpeed.GetFuncCont()->AddFunctionSectionByParams(1.0,0.0,1.0,0.0);
     mapper_Zoom.GetFuncCont()->AddFunctionSectionByParams(1.0,0.0,1.0,0.0);
-    mapper_Rotate.GetFuncCont()->AddFunctionSectionByParams(1.0,0.0,1.0,0.0);
+    mapper_Rotate.GetFuncCont()->AddFunctionSectionByParams(1.0,0.0,0.5,0.0);
     mapper_Dimmer.GetFuncCont()->AddFunctionSectionByParams(1.0,0.0,1.0,0.0);
     mapper_Strobe.GetFuncCont()->AddFunctionSectionByParams(1.0,0.0,1.0,0.0);
     mapper_RedDimm.GetFuncCont()->AddFunctionSectionByParams(1.0,0.0,1.0,0.0);
