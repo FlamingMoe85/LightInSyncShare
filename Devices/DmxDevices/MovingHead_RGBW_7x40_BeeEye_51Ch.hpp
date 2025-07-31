@@ -120,6 +120,9 @@ MovingHead_RGBW_7x40_BeeEye_51Ch(std::vector<uint8_t*>& _universum) :
 }
 
 
+    void SetPanVal(uint8_t _val){channel_Pan.SetChnlVal(_val);};
+    void SetTiltVal(uint8_t _val){channel_Tilt.SetChnlVal(_val);};
+
     RGB_Device* GetRgbDevice(int _device)
     {
         switch(_device)
