@@ -3,6 +3,8 @@
 
 #include "../../Mapper/Mapper_Channel.h"
 #include "../Channel/Channel_8Bit.hpp"
+#include "../../Mapper/Mapper_Channel_16b.h"
+#include "../Channel/Channel_16Bit.hpp"
 #include "../Interfaces/I_RGB.hpp"
 
 class RGB_Device : public I_RGB
@@ -25,7 +27,7 @@ class MovingHead_RGBW_7x40_BeeEye_51Ch
 {
 public:
 MovingHead_RGBW_7x40_BeeEye_51Ch(std::vector<uint8_t*>& _universum) :
-    channel_Pan(_universum), channel_PanFine(_universum), channel_Tilt(_universum), channel_TiltFine(_universum),
+    channel_Pan(_universum), /*channel_PanFine(_universum),*/ channel_Tilt(_universum), /*channel_TiltFine(_universum),*/
     channel_PanTiltSpeed(_universum), channel_Zoom(_universum), channel_Rotate(_universum), channel_Dimmer(_universum),
     channel_Strobe(_universum), channel_RedDimm(_universum), channel_GreenDimm(_universum), channel_BlueDimm(_universum),
     channel_WhiteDimm(_universum), channel_CT(_universum), channel_Wash(_universum), channel_StaticEff(_universum),
@@ -40,8 +42,8 @@ MovingHead_RGBW_7x40_BeeEye_51Ch(std::vector<uint8_t*>& _universum) :
                     channel_Red_6(_universum), channel_Green_6(_universum), channel_Blue_6(_universum), channel_White_6(_universum),
                     channel_Red_7(_universum), channel_Green_7(_universum), channel_Blue_7(_universum), channel_White_7(_universum),
 
-    mapper_Pan(channel_Pan, 255, 1), mapper_PanFine(channel_PanFine, 255, 1), mapper_Tilt(channel_Tilt, 255, 1),
-    mapper_TiltFine(channel_TiltFine, 255, 1), mapper_PanTiltSpeed(channel_PanTiltSpeed, 255, 1), mapper_Zoom(channel_Zoom, 255, 1),
+    mapper_Pan(channel_Pan, 65535, 1), /*mapper_PanFine(channel_PanFine, 255, 1),*/ mapper_Tilt(channel_Tilt, 65535, 1),
+    /*mapper_TiltFine(channel_TiltFine, 255, 1),*/ mapper_PanTiltSpeed(channel_PanTiltSpeed, 255, 1), mapper_Zoom(channel_Zoom, 255, 1),
     mapper_Rotate(channel_Rotate, 255, 1), mapper_Dimmer(channel_Dimmer, 255, 1),mapper_Strobe(channel_Strobe, 255, 1),
     mapper_RedDimm(channel_RedDimm, 255, 1), mapper_GreenDimm(channel_GreenDimm, 255, 1), mapper_BlueDimm(channel_BlueDimm, 255, 1),
     mapper_WhiteDimm(channel_WhiteDimm, 255, 1), mapper_CT(channel_CT, 255, 1), mapper_Wash(channel_Wash, 255, 1),
@@ -66,9 +68,9 @@ MovingHead_RGBW_7x40_BeeEye_51Ch(std::vector<uint8_t*>& _universum) :
 
 {
     mapper_Pan.GetFuncCont()->AddFunctionSectionByParams(1.0,0.0,1.0,0.0);
-    mapper_PanFine.GetFuncCont()->AddFunctionSectionByParams(1.0,0.0,1.0,0.0);
+    //mapper_PanFine.GetFuncCont()->AddFunctionSectionByParams(1.0,0.0,1.0,0.0);
     mapper_Tilt.GetFuncCont()->AddFunctionSectionByParams(1.0,0.0,1.0,0.0);
-    mapper_TiltFine.GetFuncCont()->AddFunctionSectionByParams(1.0,0.0,1.0,0.0);
+    //mapper_TiltFine.GetFuncCont()->AddFunctionSectionByParams(1.0,0.0,1.0,0.0);
     mapper_PanTiltSpeed.GetFuncCont()->AddFunctionSectionByParams(1.0,0.0,1.0,0.0);
     mapper_Zoom.GetFuncCont()->AddFunctionSectionByParams(1.0,0.0,1.0,0.0);
     mapper_Rotate.GetFuncCont()->AddFunctionSectionByParams(1.0,0.0,0.5,0.0);
@@ -148,9 +150,9 @@ MovingHead_RGBW_7x40_BeeEye_51Ch(std::vector<uint8_t*>& _universum) :
     void Init (int _adr)
     {
         channel_Pan.SetChannel(	0	+ _adr);
-        channel_PanFine.SetChannel(	1	+ _adr);
+        //channel_PanFine.SetChannel(	1	+ _adr);
         channel_Tilt.SetChannel(	2	+ _adr);
-        channel_TiltFine.SetChannel(	3	+ _adr);
+        //channel_TiltFine.SetChannel(	3	+ _adr);
         channel_PanTiltSpeed.SetChannel(	4	+ _adr);
         channel_Zoom.SetChannel(	5	+ _adr);
         channel_Rotate.SetChannel(	6	+ _adr);
@@ -202,9 +204,9 @@ MovingHead_RGBW_7x40_BeeEye_51Ch(std::vector<uint8_t*>& _universum) :
     }
 
     Mapper_Base* GetMapperPan(){ return &mapper_Pan;}
-    Mapper_Base* GetMapperPanFine(){ return &mapper_PanFine;}
+    //Mapper_Base* GetMapperPanFine(){ return &mapper_PanFine;}
     Mapper_Base* GetMapperTilt(){ return &mapper_Tilt;}
-    Mapper_Base* GetMapper(){ return &mapper_TiltFine;}
+    //Mapper_Base* GetMapperTiltFine(){ return &mapper_TiltFine;}
     Mapper_Base* GetMapperPanTiltSpeed(){ return &mapper_PanTiltSpeed;}
     Mapper_Base* GetMapperZoom(){ return &mapper_Zoom;}
     Mapper_Base* GetMapperRotate(){ return &mapper_Rotate;}
@@ -338,7 +340,10 @@ MovingHead_RGBW_7x40_BeeEye_51Ch(std::vector<uint8_t*>& _universum) :
     }
 
 private:
-Channel_8Bit    channel_Pan, channel_PanFine, channel_Tilt, channel_TiltFine, channel_PanTiltSpeed, channel_Zoom, channel_Rotate, channel_Dimmer,
+
+    Channel_16Bit channel_Pan, channel_Tilt;
+
+Channel_8Bit    channel_PanTiltSpeed, channel_Zoom, channel_Rotate, channel_Dimmer,
                 channel_Strobe, channel_RedDimm, channel_GreenDimm, channel_BlueDimm, channel_WhiteDimm, channel_CT, channel_Wash, channel_StaticEff,
                 channel_DynEff, channel_DynEffSpeed,
                 channel_BkGrndRed, channel_BkGrndGreen, channel_BkGrndBlue, channel_BkGrndWhite, channel_Reset,
@@ -350,7 +355,9 @@ Channel_8Bit    channel_Pan, channel_PanFine, channel_Tilt, channel_TiltFine, ch
                 channel_Red_6, channel_Green_6, channel_Blue_6, channel_White_6,
                 channel_Red_7, channel_Green_7, channel_Blue_7, channel_White_7;
 
-Mapper_Channel  mapper_Pan, mapper_PanFine, mapper_Tilt, mapper_TiltFine, mapper_PanTiltSpeed, mapper_Zoom, mapper_Rotate, mapper_Dimmer,
+
+
+Mapper_Channel  mapper_PanTiltSpeed, mapper_Zoom, mapper_Rotate, mapper_Dimmer,
                 mapper_Strobe, mapper_RedDimm, mapper_GreenDimm, mapper_BlueDimm, mapper_WhiteDimm, mapper_CT, mapper_Wash,
                 mapper_StaticEff, mapper_DynEff, mapper_DynEffSpeed,
                 mapper_BkGrndRed, mapper_BkGrndGreen, mapper_BkGrndBlue, mapper_BkGrndWhite, mapper_Reset,
@@ -361,6 +368,8 @@ Mapper_Channel  mapper_Pan, mapper_PanFine, mapper_Tilt, mapper_TiltFine, mapper
                 mapper_Red_5, mapper_Green_5, mapper_Blue_5, mapper_White_5,
                 mapper_Red_6, mapper_Green_6, mapper_Blue_6, mapper_White_6,
                 mapper_Red_7, mapper_Green_7, mapper_Blue_7, mapper_White_7;
+
+Mapper_Channel_16b mapper_Pan, mapper_Tilt;
 
 RGB_Device rgbDevice_1, rgbDevice_2, rgbDevice_3, rgbDevice_4, rgbDevice_5, rgbDevice_6, rgbDevice_7;
 };
