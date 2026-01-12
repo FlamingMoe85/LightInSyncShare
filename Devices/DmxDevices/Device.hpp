@@ -11,6 +11,8 @@
 #include "../../Mapper/Mapper_Channel.h"
 #include "../../Mapper/Mapper_InternalValue.h"
 
+#include "RgbDevice.hpp"
+
 /*
  * Es gibt Mapper, die Interfacebezogen sind (z.B. I_RGB für ColorWheel), oder Templatebezogen.
  * Bei InterfaceMappern müsste man für jeden Kanaltyp einen eigenen Mapper anlegen.
@@ -45,7 +47,8 @@ public:
                                                 blueMapper(blueChannel, 255, 1),
                                                 whiteMapper(whiteChannel, 255, 1),
                                                 dimmRgbMapper(dimmRGB, 255, 1),
-                                                dimmWhiteMapper(dimmWhite, 255, 1)
+                                                dimmWhiteMapper(dimmWhite, 255, 1),
+												rgbDevice(redChannel, greenChannel, blueChannel)
     {
         dimmRGB = 255;
         dimmWhite = 255;
@@ -79,6 +82,8 @@ public:
     Mapper_Base* GetWhiteMapper(){return &whiteMapper;}
     Mapper_Base* GetRgbDimmMapper(){return &dimmRgbMapper;}
     Mapper_Base* GetWhiteDimmMapper(){return &dimmWhiteMapper;}
+	
+	RGB_Device* GetRgbDevice(){return &rgbDevice;}
 
 
 private:
@@ -95,6 +100,8 @@ private:
     Mapper_Channel whiteMapper;
     Mapper_InternalValue dimmRgbMapper;
     Mapper_InternalValue dimmWhiteMapper;
+	
+	RGB_Device rgbDevice;
 };
 
 #endif // DEVICE_HPP

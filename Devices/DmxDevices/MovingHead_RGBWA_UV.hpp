@@ -6,6 +6,8 @@
 
 #include "../Channel/Channel_8Bit.hpp"
 
+#include "RgbDevice.hpp"
+
 typedef struct{
     unsigned int adr;
     unsigned int red;
@@ -40,7 +42,8 @@ MovingHead_RGBWA_UV(std::vector<uint8_t*>& _universum) : universum(_universum),
                                             uvMapper(uvChannel, 255, 1),
                                             dimmMapper(dimmChannel, 255, 1),
                                             panMapper(panChannel, 255, 1),
-                                            tiltMapper(tiltChannel, 255, 1)
+                                            tiltMapper(tiltChannel, 255, 1),
+											rgbDevice(redChannel, greenChannel, blueChannel)
 {
 
     redMapper.GetFuncCont()->AddFunctionSectionByParams(1.0, 0.0, 1.0, 0.0);
@@ -83,6 +86,8 @@ Mapper_Base* GetUvMapper(){return &uvMapper;}
 Mapper_Base* GetPanMapper(){return &panMapper;}
 Mapper_Base* GetTiltMapper(){return &tiltMapper;}
 
+RGB_Device* GetRgbDevice(){return &rgbDevice;}
+
 private:
 std::vector<uint8_t*>& universum;
 Channel_8Bit redChannel;
@@ -102,5 +107,7 @@ Mapper_Channel uvMapper;
 Mapper_Channel dimmMapper;
 Mapper_Channel panMapper;
 Mapper_Channel tiltMapper;
+
+RGB_Device rgbDevice;
 };
 #endif // MOVINGHEAD_RGBWA_UV_HPP
