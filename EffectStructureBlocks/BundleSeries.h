@@ -14,7 +14,7 @@
 class BundleSeries : public ClientServerBase, public FunctionOwners
 {
 public:
-    BundleSeries(int _type = OLD_BS) :    mapperSpeed(speedMultiplier, 10.0, 0.1),
+    BundleSeries(int _type = OLD_BS) :    mapperSpeed(speedMultiplier, 1.0, 1.0),
                         mapperShift(shift, 1.0, 0.0),
                         mapperspanNotch(spanNotch, 1.0, 0.5),
                         mapperspanMin(spanMin, 1.0, 0.0),
